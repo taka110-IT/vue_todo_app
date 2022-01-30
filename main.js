@@ -4,42 +4,40 @@ const TodoApp = {
       todos: [],
       item: '',
       editIndex: '',
-      edit: false
-    }
-  },
-  watch: {
-    todos: {
-      handler() {
-        localStorage.setItem('todos', JSON.stringify(this.todos))
-      },
-      deep: true
     }
   },
   mounted() {
-    this.todos = JSON.parse(localStorage.getItem('todos'))
+    this.todos = JSON.parse(localStorage.getItem('todos')) || []
   },
   methods: {
     addItem() {
-      this.todos.push(this.item)
+      const newItem = {id: Date.now(), item: this.item}
+      this.todos.push(newItem)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
       this.item = ''
     },
-    editItem(index) {
-      this.item = this.todos[index]
-      this.editIndex = index
-      if (!this.edit) this.edit = !this.edit
+      editItem(index) {
+        this.item = this.todos[index].item
+        this.editIndex = index
     },
     setItem() {
-      this.todos.splice(this.editIndex, 1, this.item)
+      this.todos[this.editIndex].item = this.item
+      localStorage.setItem('todos', JSON.stringify(this.todos))
       this.editIndex = ''
-      this.edit = !this.edit
       this.item = ''
     },
     deleteItem(index) {
       if (confirm('Delete OK?')) {
         this.todos.splice(index, 1)
-        if (this.edit) this.edit = !this.edit
+        localStorage.setItem('todos', JSON.stringify(this.todos))
+        this.editIndex = ''
         this.item = ''
       }
+    }
+  },
+  computed: {
+    edit() {
+      return (this.editIndex === '') ? true : false
     }
   }
 }

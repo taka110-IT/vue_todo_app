@@ -11,19 +11,19 @@
   <div id="app" class="container">
     <h1>My Todos</h1>
     <ul>
-      <li v-for="(todo,index) in todos">
-        <p>{{ todo }}</p>
+      <li v-for="(todo, index) in todos" :key="todo.id">
+        <p>{{ todo.item }}</p>
         <button @click="editItem(index)">edit</button>
         <button @click="deleteItem(index)">delete</button>
       </li>
     </ul>
-    <form @submit.prevent="setItem" v-if="edit">
+    <form @submit.prevent="addItem" v-if="edit">
+      <input type="text" v-model="item">
+      <input type="submit" value="Add">
+    </form>
+    <form @submit.prevent="setItem" v-else>
       <input type="text" v-model="item">
       <input type="submit" value="Set">
-    </form>
-    <form @submit.prevent="addItem" v-else>
-      <input type="text" v-model="item" size="30">
-      <input type="submit" value="Add">
     </form>
   </div>
 
