@@ -37,7 +37,7 @@ const TodoApp = {
   },
   computed: {
     edit() {
-      return (this.editIndex === '') ? true : false
+      return this.editIndex === ''
     }
   }
 }
