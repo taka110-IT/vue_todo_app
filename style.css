@@ -1,0 +1,46 @@
+body {
+  font-size: 16px;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  line-height: 1.5;
+}
+
+.container {
+  width: 500px;
+  margin: auto;
+}
+
+#app h1 {
+  font-size: 20px;
+  border-bottom: 1px solid orange;
+}
+
+#app li {
+  padding: 5px;
+  margin: 10px;
+  list-style-type: none;
+  background-color: skyblue;
+  border-left: 6px solid #2d8fdd;
+  border-radius: 0 10px 10px 0;
+}
+
+#app li p {
+  display: inline-block;
+  width: 340px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+#app li button {
+  display: inline-block;
+  width: 50px;
+  margin: 0 5px;
+}
+
+#app input {
+  margin: 10px;
+  padding: 4px 10px;
+}
+
+input[type="text"] {
+   width: 200px;
+   }
